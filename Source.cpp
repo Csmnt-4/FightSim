@@ -22,7 +22,7 @@ void main() {
             std::cout << "They have " << playerOne.vitl * 10 << " HP left." << std::endl;
         }
         else {
-            std::cout << "Monster " << creatureThe.race << " won!" << std::endl;
+            std::cout << "Monster " << RaceToChar(creatureThe.race) << " won!" << std::endl;
             std::cout << "They have " << playerOne.vitl * 10 << " HP left." << std::endl;
             done = true;
         }
@@ -30,13 +30,7 @@ void main() {
 }
 
 std::string RaceToChar(RaceEnum race) {
-    switch (race)
-    {
-    default:
-    {
-        throw std::invalid_argument("Unknown Monster");
-        break;
-    }
+    switch (race) {
     case RaceEnum::UNDEAD: {
         return "Undead";
         break;
@@ -44,18 +38,75 @@ std::string RaceToChar(RaceEnum race) {
     case RaceEnum::SYREN: {
         return "Syren";
         break;
-
-    } case RaceEnum::BANSHEE: {
+    }
+    case RaceEnum::BANSHEE: {
         return "Banshee";
         break;
-    } case RaceEnum::GOBLIN: {
+    }
+    case RaceEnum::GOBLIN: {
         return "Goblin";
         break;
-    }case RaceEnum::IMP: {
+    }
+    case RaceEnum::IMP: {
         return "Imp";
-        break; }
+        break;
+    }
     case RaceEnum::WYVERN: {
         return "Wyvern";
-        break; }
+        break;
+    }
+    default: {
+        throw std::invalid_argument("Unknown Monster");
+        break;
+    }
+    }
+}
+
+std::string ModificatorToChar(ModificatorEnum mod) {
+    switch (mod) {
+    case ModificatorEnum::BLIND: {
+        return "Undead";
+        break;
+    }
+    case ModificatorEnum::FAST: {
+        return "Fast";
+        break;
+    }
+    case ModificatorEnum::HALFDEAD: {
+        return "Halfdead";
+        break;
+    }
+    case ModificatorEnum::HUNGRY: {
+        return "Hungry";
+        break;
+    }
+    case ModificatorEnum::ORDINARY: {
+        return "Ordinary";
+        break;
+    }
+    case ModificatorEnum::SLOW: {
+        return "Slow";
+        break;
+    }
+    case ModificatorEnum::TOUGH: {
+        return "Tough";
+        break;
+    }
+    case ModificatorEnum::TRICKY: {
+        return "Tricky";
+        break;
+    }
+    case ModificatorEnum::WEAK: {
+        return "Weak";
+        break;
+    }
+    case ModificatorEnum::WOUNDED: {
+        return "Wounded";
+        break;
+    }
+    default: {
+        throw std::invalid_argument("Unknown Modificator");
+        break;
+    }
     }
 }
