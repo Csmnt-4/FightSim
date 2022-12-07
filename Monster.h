@@ -30,4 +30,5 @@ public:
 	void Print(); //displays the monster information
 };
 
-void GenerateMonster(Monster& theMonster); //assigns theMonster random stats
+void GenerateMonsterManually(Monster& theMonster); //assigns theMonster random stats while you get to choose the output
+void GenerateMonsterRandom(Monster& theMonster); //assigns theMonster random type, rerolls its difficulty and stats 

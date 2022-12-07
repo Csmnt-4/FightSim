@@ -114,7 +114,205 @@ void Monster::Print() {
 
 }
 
-void GenerateMonster(Monster& theMonster) {
+void GenerateMonsterRandom(Monster& theMonster) {
+	int choice = dice.Roll1DN(6);
+
+	switch (choice) {
+	case 1: {
+		theMonster.race = RaceEnum::BANSHEE;
+		theMonster.type = TypeEnum::SPIRIT;
+		theMonster.pDef = 0;
+		theMonster.mDef = 8;
+		theMonster.pAtk = 1;
+		theMonster.mAtk = 7;
+		theMonster.agil = 8;
+		theMonster.vitl = 8;
+		theMonster.luck = 5;
+	}
+		  break;
+	case 2: {
+		theMonster.race = RaceEnum::GOBLIN;
+		theMonster.type = TypeEnum::MONSTER;
+		theMonster.pDef = 3;
+		theMonster.mDef = 1;
+		theMonster.pAtk = 4;
+		theMonster.mAtk = 0;
+		theMonster.agil = 12;
+		theMonster.vitl = 5;
+		theMonster.luck = 5;
+	}
+		  break;
+	case 3: {
+		theMonster.race = RaceEnum::IMP;
+		theMonster.type = TypeEnum::SPIRIT;
+		theMonster.pDef = 3;
+		theMonster.mDef = 10;
+		theMonster.pAtk = 1;
+		theMonster.mAtk = 9;
+		theMonster.agil = 10;
+		theMonster.vitl = 5;
+		theMonster.luck = 5;
+	}
+		  break;
+	case 4: {
+		theMonster.race = RaceEnum::SYREN;
+		theMonster.type = TypeEnum::MONSTER;
+		theMonster.pDef = 8;
+		theMonster.mDef = 2;
+		theMonster.pAtk = 2;
+		theMonster.mAtk = 7;
+		theMonster.agil = 8;
+		theMonster.vitl = 9;
+		theMonster.luck = 4;
+	}
+		  break;
+	case 5: {
+		theMonster.race = RaceEnum::UNDEAD;
+		theMonster.type = TypeEnum::UNDEAD;
+		theMonster.pDef = 10;
+		theMonster.mDef = 0;
+		theMonster.pAtk = 5;
+		theMonster.mAtk = 0;
+		theMonster.agil = 5;
+		theMonster.vitl = 12;
+		theMonster.luck = 0;
+	}
+		  break;
+	case 6: {
+		theMonster.race = RaceEnum::WYVERN;
+		theMonster.type = TypeEnum::MONSTER;
+		theMonster.pDef = 12;
+		theMonster.mDef = 3;
+		theMonster.pAtk = 10;
+		theMonster.mAtk = 0;
+		theMonster.agil = 9;
+		theMonster.vitl = 11;
+		theMonster.luck = 6;
+	}
+		  break;
+	default:
+		std::cout << "Invalid input at type choice." << std::endl;
+	}
+
+	choice = dice.Roll1DN(3);
+	switch (choice) {
+	case 1: {
+		theMonster.pDef += dice.Roll1DN(3);
+		theMonster.mDef += dice.Roll1DN(3);
+		theMonster.pAtk += dice.Roll1DN(3);
+		theMonster.mAtk += dice.Roll1DN(3);;
+		theMonster.agil += dice.Roll1DN(3);
+		theMonster.vitl += dice.Roll1DN(3);
+	}
+		  break;
+	case 2: {
+		theMonster.pDef += dice.Roll1DN(4);
+		theMonster.mDef += dice.Roll1DN(4);
+		theMonster.pAtk += dice.Roll1DN(4);
+		theMonster.mAtk += dice.Roll1DN(4);
+		theMonster.agil += dice.Roll1DN(4);
+		theMonster.vitl += dice.Roll1DN(4);
+	}
+		  break;
+	case 3: {
+		theMonster.pDef += dice.Roll1DN(3) - dice.Roll1DN(3);
+		theMonster.mDef += dice.Roll1DN(3) - dice.Roll1DN(3);
+		theMonster.pAtk += dice.Roll1DN(3) - dice.Roll1DN(3);
+		theMonster.mAtk += dice.Roll1DN(3) - dice.Roll1DN(3);
+		theMonster.agil += dice.Roll1DN(3) - dice.Roll1DN(3);
+		theMonster.vitl += dice.Roll1DN(3) - dice.Roll1DN(3);
+	}
+		  break;
+	default: {
+		std::cout << "Invalid input at difficulty choice." << std::endl;
+	}
+	}
+
+	choice = dice.Roll1DN(10);
+
+	switch (choice) {
+	case 1: {
+		theMonster.modificator = ModificatorEnum::ORDINARY;
+	}
+		  break;
+	case 2: {
+		theMonster.modificator = ModificatorEnum::WEAK;
+		theMonster.modAgil = -dice.Roll1DN(3);
+		theMonster.modPDef = -dice.Roll1DN(3);
+		theMonster.modPAtk = -dice.Roll1DN(3);
+	}
+		  break;
+	case 3: {
+		theMonster.modificator = ModificatorEnum::TOUGH;
+		theMonster.modPDef = dice.Roll1DN(3);
+		theMonster.modVitl = dice.Roll1DN(3);
+		theMonster.modAgil = -dice.Roll1DN(3);
+	}
+		  break;
+	case 4: {
+		theMonster.modificator = ModificatorEnum::HUNGRY;
+		theMonster.modPAtk = dice.Roll1DN(3);
+		theMonster.modAgil = dice.Roll1DN(3);
+		theMonster.modPDef = -dice.Roll1DN(2);
+		theMonster.modVitl = -dice.Roll1DN(3);
+	}
+		  break;
+	case 5: {
+		theMonster.modificator = ModificatorEnum::WOUNDED;
+		theMonster.modPDef = -dice.Roll1DN(3);
+		theMonster.modPAtk = -dice.Roll1DN(2);
+		theMonster.modAgil = -dice.Roll1DN(3);
+		theMonster.modVitl = -theMonster.vitl / 4;
+	}
+		  break;
+	case 6: {
+		theMonster.modificator = ModificatorEnum::TRICKY;
+		theMonster.modLuck = dice.Roll1DN(3);
+		theMonster.modAgil = dice.Roll1DN(4);
+		theMonster.modVitl = -dice.Roll1DN(2);
+	}
+		  break;
+	case 7: {
+		theMonster.modificator = ModificatorEnum::BLIND;
+		theMonster.modLuck = dice.Roll1DN(2);
+		theMonster.modPDef = -theMonster.pDef / 2;
+		theMonster.modMDef = -theMonster.mDef / 2;
+		theMonster.modVitl = -theMonster.mDef / 4;
+	}
+		  break;
+	case 8: {
+		theMonster.modificator = ModificatorEnum::FAST;
+		theMonster.modLuck = dice.Roll1DN(3);
+		theMonster.modAgil = dice.Roll1DN(8) - dice.Roll1DN(4);
+	}
+		  break;
+	case 9: {
+		theMonster.modificator = ModificatorEnum::SLOW;
+		theMonster.modPDef = theMonster.pDef / 4;
+		theMonster.modLuck = -dice.Roll1DN(2);
+		theMonster.modAgil = -dice.Roll1DN(4);
+	}
+		  break;
+	case 10: {
+		theMonster.modificator = ModificatorEnum::HALFDEAD;
+		theMonster.modLuck = dice.Roll1DN(3);
+		theMonster.modPDef = -dice.Roll1DN(4);
+		theMonster.modAgil = -dice.Roll1DN(4);
+		theMonster.modVitl = -theMonster.vitl / 2;
+	}
+		   break;
+	default: {
+		std::cout << "That was an invalid choice! You are now a khajiit. May the spirits guide you!" << std::endl;
+		theMonster.modificator = ModificatorEnum::BLIND;
+		theMonster.modMDef = dice.Roll1DN(3);
+		theMonster.modLuck = dice.Roll1DN(3) + dice.Roll1DN(3);
+		theMonster.modPDef = -dice.Roll1DN(3);
+		theMonster.modVitl = -dice.Roll1DN(3);
+	}
+	}
+}
+
+void GenerateMonsterManually(Monster& theMonster) {
 	int choice;
 	std::string input;
 	system("cls");

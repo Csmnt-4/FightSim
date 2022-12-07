@@ -15,21 +15,22 @@ void main() {
 
     while (!done) {
         Monster creatureThe;
-        GenerateMonster(creatureThe);
+        GenerateMonsterManually(creatureThe);
 
         if (Fight(playerOne, creatureThe)) {
             std::cout << "The player " << playerOne.name << " won!" << std::endl;
             std::cout << "They have " << playerOne.vitl * 10 << " HP left." << std::endl;
         }
         else {
-            std::cout << "Monster " << RaceToChar(creatureThe.race) << " won!" << std::endl;
-            std::cout << "They have " << playerOne.vitl * 10 << " HP left." << std::endl;
+            std::cout << "Monster " << ModificatorToString(creatureThe.modificator) << " "
+                      << RaceToString(creatureThe.race) << " won!" << std::endl;
+            std::cout << "They have slained " << playerOne.name << "." << std::endl;
             done = true;
         }
     }
 }
 
-std::string RaceToChar(RaceEnum race) {
+std::string RaceToString(RaceEnum race) {
     switch (race) {
     case RaceEnum::UNDEAD: {
         return "Undead";
@@ -62,7 +63,7 @@ std::string RaceToChar(RaceEnum race) {
     }
 }
 
-std::string ModificatorToChar(ModificatorEnum mod) {
+std::string ModificatorToString(ModificatorEnum mod) {
     switch (mod) {
     case ModificatorEnum::BLIND: {
         return "Undead";
