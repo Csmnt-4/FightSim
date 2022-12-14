@@ -1,12 +1,11 @@
-//
-// Created by victor on 09/12/22.
-//
-
 #ifndef FIGHTSIM_MAGIC_H
 #define FIGHTSIM_MAGIC_H
 
+//TODO: Ask about #pragma once
+
 #include <string>
 
+//TODO: Change to hashmap
 enum class SpellElementEnum {
     WIND = 0,
     FIRE = 1,
@@ -90,6 +89,7 @@ public:
     void Print(); //displays the monster information
 };
 
+//TODO: Implement basic spell-defining function
 int FindSpellType(std::string &spell);
 
 int FindSpellElem(std::string &spell);

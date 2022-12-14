@@ -1,6 +1,8 @@
 #ifndef FIGHTSIM_MONSTER_H
 #define FIGHTSIM_MONSTER_H
 
+//TODO: Ask about #pragma once
+
 #include <string>
 #include "library/helpers/DieRoller.h"
 

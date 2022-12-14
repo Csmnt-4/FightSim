@@ -11,9 +11,16 @@ void DieRoller::SeedRNG(unsigned int seedVal) {
     rng.seed(seedVal);                     // just replaces the generated seed with a provided one
 }
 
-int DieRoller::Roll1DN(int N) {
-    std::uniform_int_distribution<int> DNRoll(1, N);
-    return DNRoll(rng);
+int DieRoller::Roll1DN(int N) { // now accepts negative values
+    if (N == 0) {
+        return 0;
+    } else if (N < 0) {
+        std::uniform_int_distribution<int> DNRoll(1, -N);
+        return -DNRoll(rng);
+    } else {
+        std::uniform_int_distribution<int> DNRoll(1, N);
+        return DNRoll(rng);
+    }
 }
 
 int DieRoller::Roll6D3() {                    // rolls 6 three-sided dices and sums them

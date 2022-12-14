@@ -1,6 +1,8 @@
 #ifndef FIGHTSIM_DIEROLLER_H
 #define FIGHTSIM_DIEROLLER_H
 
+//TODO: Ask about #pragma once
+
 #include <random>
 
 class DieRoller {

@@ -1,10 +1,7 @@
 #include "Monster.h"
-#include "library/helpers/DieRoller.h"
 
 #include <iostream>
 #include <string>
-
-DieRoller dice;
 
 void Monster::Print() {
     system("cls");

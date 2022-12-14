@@ -3,7 +3,7 @@
 #include "library/entities/Monster.h"
 #include "library/entities/Player.h"
 #include "library/helpers/DieRoller.h"
-#include "library/attacks/Physical.h"
+#include "library/attacks/AttackCycle.h"
 
 
 int main() {
@@ -26,7 +26,7 @@ int main() {
             Monster creatureThe;
             GenerateMonsterRandom(creatureThe);
 
-            if (AutomaticFight(playerOne, creatureThe, dice)) {
+            if (AutomatedFight(playerOne, creatureThe, dice)) {
                 std::cout << playerOne.name << " won!" << std::endl;
                 sleep(2);
                 std::cout << "  You have " << playerOne.vitl << " HP left." << std::endl;
@@ -48,7 +48,7 @@ int main() {
             Monster creatureThe;
             GenerateMonsterRandom(creatureThe);
 
-            if (AutomaticFight(playerOne, creatureThe, dice)) {
+            if (AutomatedFight(playerOne, creatureThe, dice)) {
                 std::cout << playerOne.name << " won!" << std::endl;
                 sleep(2);
                 std::cout << "  You have " << playerOne.vitl << " HP left." << std::endl;

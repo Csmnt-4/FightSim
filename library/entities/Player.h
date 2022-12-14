@@ -1,6 +1,8 @@
 #ifndef FIGHTSIM_PLAYER_H
 #define FIGHTSIM_PLAYER_H
 
+//TODO: Ask about #pragma once
+
 #include <string>
 #include "library/helpers/DieRoller.h"
 
@@ -11,6 +13,7 @@ enum class HumanoidRaceEnum {
     HUMAN, ELF, TIEFLING, ORK, LIZARDMAN, KHAJIIT,
 };
 
+//TODO:  Decide on perception
 class Player {
 public:
     std::string name;
