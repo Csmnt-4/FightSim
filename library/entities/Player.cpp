@@ -2,6 +2,8 @@
 #include "library/helpers/DieRoller.h"
 
 #include<iostream>
+#include <csignal>
+
 void Player::Print() {
     system("cls");
     std::cout << "Name: " << name << std::endl;
@@ -161,6 +163,9 @@ void CreateCharacter(Player &thePlayer) {
         }
     }
 
+    sleep(2);
+    system("cls");
+
     std::cout << "\nWhat class do you wish to play as?" << std::endl;
     std::cout << "Please enter the # of your choice:" << std::endl;
     std::cout << "1) Warrior" << std::endl;
@@ -195,6 +200,9 @@ void CreateCharacter(Player &thePlayer) {
             thePlayer.job = JobEnum::BARD;
     }
 
+    sleep(2);
+    system("cls");
+
     std::cout << "\nHow do you wish to set your characteristics?" << std::endl;
     std::cout << "Please enter the # of your choice:" << std::endl;
     std::cout << "1) Roll 6D3" << std::endl;
@@ -205,6 +213,7 @@ void CreateCharacter(Player &thePlayer) {
     std::cin >> choice;
     switch (choice) {
         case 1: {
+//            TODO: Consider moving assigning values to function
             thePlayer.pDef = dice.Roll6D3();
             thePlayer.mDef = dice.Roll6D3() / 6;
             thePlayer.pAtk = dice.Roll6D3();
@@ -265,4 +274,7 @@ void CreateCharacter(Player &thePlayer) {
             thePlayer.luck = dice.Roll3D6() / 5 * 3;
         }
     }
+
+    sleep(2);
+    system("cls");
 }
